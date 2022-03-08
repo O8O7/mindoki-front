@@ -1,0 +1,22 @@
+.footer {
+  display: block;
+  margin-top: auto;
+  position: sticky;
+  /* position: fixed; */
+  width: 100%;
+  z-index: 10000;
+  bottom: 0;
+}
+
+.footerContainer {
+  background-color: #242424;
+  min-height: 40px;
+  /* margin-top: 40px; */
+}
+
+.small {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+}
