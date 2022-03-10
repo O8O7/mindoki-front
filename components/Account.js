@@ -50,23 +50,28 @@ const Account = () => {
         onClick={handleClick}
         sx={{
           position: "fixed",
-          marginRight: 2,
+          marginRight: { xs: 1.5, sm: 2, md: 3 },
           right: 0,
           display: { xs: "block", lg: "none" },
+          p: 0,
+          //   height: "45px",
+          //   width: "45px",
+          //   minWidth: "45px",
+          height: { xs: "40px", sm: "45px" },
+          width: { xs: "40px", sm: "45px" },
+          minWidth: { xs: "40px", sm: "45px" },
+          borderRadius: "50%",
         }}
       >
         {user ? (
           <div
             style={{
-              height: "45px",
-              width: "45px",
-              borderRadius: "50%",
+              height: "100%",
+              width: "100%",
               boxShadow:
                 "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(92 92 92)",
               overflow: "hidden",
               margin: "0 auto",
-              marginRight: "10px",
-              marginLeft: "5px",
             }}
           >
             <AvatarIcon
@@ -80,15 +85,13 @@ const Account = () => {
         ) : (
           <div
             style={{
-              height: "45px",
-              width: "45px",
+              height: "100%",
+              width: "100%",
               borderRadius: "50%",
               boxShadow:
                 "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(92 92 92)",
               overflow: "hidden",
               margin: "0 auto",
-              marginRight: "10px",
-              marginLeft: "5px",
             }}
           >
             <AvatarIcon

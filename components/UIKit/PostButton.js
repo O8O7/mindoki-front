@@ -8,10 +8,9 @@ const PostButton = () => {
         <a>
           <EditIcon
             sx={{
-              width: 65,
-              height: 65,
+              width: { xs: 50, md: 60, lg: 65 },
+              height: { xs: 50, md: 60, lg: 65 },
             }}
-            fontSize="large"
           />
         </a>
       </div>

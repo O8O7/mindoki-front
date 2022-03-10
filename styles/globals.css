@@ -23,24 +23,6 @@ img:hover {
   transition: 1s all;
 }
 
-.postButton {
-  display: flex;
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-  width: 100px;
-  height: 100px;
-  background-color: #8dc5ff;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  opacity: 70%;
-}
-
-.postButton:hover {
-  opacity: 100%;
-}
-
 .MuiTreeItem-label {
   font-size: 1.2rem !important;
 }
@@ -433,6 +415,23 @@ a:hover {
   font-size: 15px;
 }
 
+.postButton {
+  display: flex;
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 80px;
+  height: 80px;
+  background-color: #8dc5ff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  opacity: 70%;
+}
+
+.postButton:hover {
+  opacity: 100%;
+}
 /* 
     画面が600px以上からのデザイン
     material ui sm(smaill)
@@ -449,6 +448,10 @@ a:hover {
 
   .CardSize {
     font-size: 16px;
+  }
+  .postButton {
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -468,6 +471,11 @@ a:hover {
 
   .CardSize {
     font-size: 17px;
+  }
+
+  .postButton {
+    width: 100px;
+    height: 100px;
   }
 }
 
