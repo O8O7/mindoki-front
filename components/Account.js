@@ -54,9 +54,6 @@ const Account = () => {
           right: 0,
           display: { xs: "block", lg: "none" },
           p: 0,
-          //   height: "45px",
-          //   width: "45px",
-          //   minWidth: "45px",
           height: { xs: "40px", sm: "45px" },
           width: { xs: "40px", sm: "45px" },
           minWidth: { xs: "40px", sm: "45px" },
@@ -68,6 +65,7 @@ const Account = () => {
             style={{
               height: "100%",
               width: "100%",
+              borderRadius: "50%",
               boxShadow:
                 "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(92 92 92)",
               overflow: "hidden",
