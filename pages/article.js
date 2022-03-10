@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import AvatarCard from "../components/AvatarCard";
 import PostButton from "../components/UIKit/PostButton";
 import LoadingKit from "../components/UIKit/LoadingKit";
+import NotFoundCard from "../components/Card/NotFoundCard";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -44,7 +45,7 @@ function ResponsiveDrawer() {
           最新記事一覧
           {data && data.results.length && ` 全${data.count}件`}
         </Typography>
-        {data && (
+        {data && data.results.length ? (
           <>
             {data.results.map((article, i) => (
               <div key={`article_${i}`} className="postcard">
@@ -66,6 +67,8 @@ function ResponsiveDrawer() {
               </div>
             ))}
           </>
+        ) : (
+          <NotFoundCard />
         )}
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>

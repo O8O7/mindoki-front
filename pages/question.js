@@ -13,6 +13,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import QuestionCard from "../components/Card/QuestionCard";
 import AvatarCard from "../components/AvatarCard";
 import PostButton from "../components/UIKit/PostButton";
+import NotFoundCard from "../components/Card/NotFoundCard";
 
 const drawerWidth = 230;
 
@@ -47,7 +48,7 @@ function Question() {
         >
           最新Q&A投稿一覧{data && data.results.length && ` 全${data.count}件`}
         </Typography>
-        {data && (
+        {data && data.results.length ? (
           <>
             {data.results.map((question, i) => (
               <div key={`question_${i}`} className="postcard">
@@ -69,6 +70,8 @@ function Question() {
               </div>
             ))}
           </>
+        ) : (
+          <NotFoundCard />
         )}
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>

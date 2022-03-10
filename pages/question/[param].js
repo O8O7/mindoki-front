@@ -1,14 +1,9 @@
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Toolbar from "@mui/material/Toolbar";
 
 import SearchUIKit from "../../components/SearchUIKit";
-import { Pagination } from "@mui/material";
 import IconBreadcrumbs from "../../components/IconBreadcrumbs";
 import { Typography } from "@mui/material";
-import { Stack } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import useSWR from "swr";
 import { useState } from "react";
 import { Button } from "@mui/material";
@@ -18,6 +13,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 import QuestionCard from "../../components/Card/QuestionCard";
 import AvatarCard from "../../components/AvatarCard";
+import NotFoundCard from "../../components/Card/NotFoundCard";
 
 const drawerWidth = 230;
 
@@ -56,7 +52,7 @@ function Question() {
         >
           {param}のQ&A投稿全{data.count}件
         </Typography>
-        {data && (
+        {data && data.results.length ? (
           <>
             {data.results.map((question, i) => (
               <div key={`question_${i}`} className="postcard">
@@ -78,8 +74,9 @@ function Question() {
               </div>
             ))}
           </>
+        ) : (
+          <NotFoundCard />
         )}
-        <Divider />
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {data && data.previous ? (
