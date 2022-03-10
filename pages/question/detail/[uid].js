@@ -17,10 +17,10 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function ResponsiveDrawer() {
   const router = useRouter();
-  const { id } = router.query;
+  const { uid } = router.query;
 
   const { data, error } = useSWR(
-    id ? `${process.env.NEXT_PUBLIC_API_URL}/api/question/${id}/` : null,
+    uid ? `${process.env.NEXT_PUBLIC_API_URL}/api/question/${uid}/` : null,
     fetcher
   );
 
@@ -69,7 +69,7 @@ function ResponsiveDrawer() {
               />
             </div>
           ))}
-        <CommentForm category="question" id={id} />
+        <CommentForm category="question" id={uid} />
       </Box>
       <AvatarCard />
     </>

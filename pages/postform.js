@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
@@ -18,28 +18,19 @@ import Select from "@mui/material/Select";
 import ArticleForm from "../components/Form/ArticleForm";
 import QuestionForm from "../components/Form/QuestionForm";
 import PortfolioForm from "../components/Form/PortfolioForm";
-
-import { load_user } from "../reduxs/actions/auth";
-
 import { useRouter } from "next/router";
 
 import { useDispatch, useSelector } from "react-redux";
 import MarkdownCheatSheet from "../components/MarkdownCheatSheet";
+import { languageData } from "../components/UIKit/languageData";
 
 const sideWidth = 500;
 
-const PostForm = ({ languages, languageLabel }) => {
+const PostForm = () => {
   const [category, setCategory] = useState("");
   const user = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
   const router = useRouter();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
-  //   useEffect(() => {
-  //     if (!user) {
-  //       dispatch(load_user());
-  //     }
-  //   }, [user, dispatch]);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -93,9 +84,9 @@ const PostForm = ({ languages, languageLabel }) => {
               </FormControl>
             </Grid>
           </Grid>
-          {category == 10 ? <QuestionForm languages={languages} /> : ""}
-          {category == 20 ? <PortfolioForm languages={languages} /> : ""}
-          {category == 30 ? <ArticleForm languages={languages} /> : ""}
+          {category == 10 ? <QuestionForm languages={languageData} /> : ""}
+          {category == 20 ? <PortfolioForm languages={languageData} /> : ""}
+          {category == 30 ? <ArticleForm languages={languageData} /> : ""}
         </Box>
         <Box
           component="form"
@@ -111,37 +102,6 @@ const PostForm = ({ languages, languageLabel }) => {
       </Container>
     </div>
   );
-  // };
 };
-
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:8000/api/language_list/");
-  const language = await res.json();
-  const languages = await language.results.map((option) => ({
-    id: option.id,
-    label: option.name,
-  }));
-
-  return {
-    props: {
-      languages,
-    },
-  };
-}
-
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8000/api/language_list/");
-//   const language = await res.json();
-//   const languages = await language.results.map((option) => ({
-//     id: option.id,
-//     label: option.name,
-//   }));
-
-//   return {
-//     props: {
-//       languages,
-//     },
-//   };
-// }
 
 export default PostForm;

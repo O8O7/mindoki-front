@@ -7,19 +7,10 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import Loader from "react-loader-spinner";
-import Link from "next/link";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { user_register } from "../../reduxs/actions/auth";
-
-import { MenuItem } from "@mui/material";
-import { Select } from "@mui/material";
-import { InputLabel } from "@mui/material";
-import { FormControl } from "@mui/material";
 import { Autocomplete } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 
 import ReactTags from "react-tag-autocomplete";
 import MarkdownDialog from "../MarkdownDialog";
@@ -29,20 +20,14 @@ import { post_question } from "../../reduxs/actions/question";
 const QuestionForm = (props) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const message = useSelector((state) => state.auth.message);
-  const status_code = useSelector((state) => state.auth.status_code);
-  const loading = useSelector((state) => state.auth.loading);
+  //   const loading = useSelector((state) => state.auth.loading);
+  const [loading, setLoading] = useState(false);
 
   const [suggestions, setSuggestions] = useState([]);
   const [tags, setTags] = useState([]);
-  //   const [isPublic, setIsPublic] = useState(false);
   const [language, setLanguage] = useState("");
   const reactTags = useRef();
-
-  //   const handleChange = () => {
-  //     setIsPublic(!isPublic);
-  //   };
 
   const onDelete = useCallback(
     (tagIndex) => {
@@ -76,8 +61,30 @@ const QuestionForm = (props) => {
   };
 
   const onSubmit = async (data) => {
-    if (dispatch && dispatch !== null && dispatch !== undefined) {
-      await dispatch(post_question(language, data.title, tags, data.content));
+    // if (dispatch && dispatch !== null && dispatch !== undefined) {
+    //   await dispatch(post_question(language, data.title, tags, data.content));
+    // }
+    if (language && data.title && data.content) {
+      setLoading(true);
+      const body = JSON.stringify({
+        language: language,
+        title: data.title,
+        tag: tags,
+        description: data.content,
+      });
+      fetch("/api/question/rest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body,
+      }).then((data) => {
+        if (data.status == 201) {
+          alert("Q&A投稿に成功しました");
+          router.replace("/question");
+        } else {
+          alert("Q&A投稿に失敗しました");
+        }
+      });
+      setLoading(false);
     }
   };
   return (
@@ -120,8 +127,8 @@ const QuestionForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 30,
-                message: "30文字以下で入力してください",
+                value: 64,
+                message: "64文字以下で入力してください",
               },
             })}
             name="title"
@@ -176,8 +183,8 @@ const QuestionForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 30,
-                message: "30文字以下で入力してください",
+                value: 5000,
+                message: "5000文字以下で入力してください",
               },
             })}
             name="content"

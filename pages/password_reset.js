@@ -105,7 +105,7 @@ export default function PasswordReset() {
                 noValidate
                 sx={{ mt: 1, width: "100%" }}
               >
-                <TextField
+                {/* <TextField
                   {...register("email", {
                     required: "*入力してください",
                     minLength: {
@@ -129,6 +129,32 @@ export default function PasswordReset() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                /> */}
+                <TextField
+                  {...register("email", {
+                    required: "*入力してください",
+                    minLength: {
+                      value: 8,
+                      message: "8文字以上入力してください",
+                    },
+                    maxLength: 100,
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      message: "@を含めた半角英数字で入力してください",
+                    },
+                  })}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  onChange={onChange}
+                  value={email}
+                  label="開発中"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                  disabled
                 />
                 <span style={{ color: "red" }}>{errors.email?.message}</span>
                 {status_code && status_code.email && (
@@ -154,13 +180,22 @@ export default function PasswordReset() {
                     height={50}
                   />
                 ) : (
+                  //   <Button
+                  //     type="submit"
+                  //     fullWidth
+                  //     variant="contained"
+                  //     sx={{ mt: 3, mb: 2 }}
+                  //   >
+                  //     送信
+                  //   </Button>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    disabled
                   >
-                    送信
+                    開発中
                   </Button>
                 )}
                 <Grid container>

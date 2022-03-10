@@ -21,7 +21,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function Question() {
   const [pageURL, setPageURL] = useState(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/question_list_large/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/question/list_large/`
   );
   const { data, error } = useSWR(pageURL, fetcher);
 

@@ -31,6 +31,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Markdown from "../../../components/Markdown";
 
 const drawerWidth = 230;
 const rightDrawer = 300;
@@ -262,11 +263,7 @@ function PortfolioDetail() {
               <PortfolioGood id={data.id} good={data.good} />
             </div>
           </div>
-          <Container style={{ marginTop: 15 }}>
-            <Typography variant="body1" gutterBottom>
-              {data.description}
-            </Typography>
-          </Container>
+          <Markdown description={data.description} />
         </Card>
         {data.comment &&
           data.comment.map((com, i) => (

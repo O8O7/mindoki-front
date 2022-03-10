@@ -13,7 +13,7 @@ export default async function User(req, res) {
 
     try {
       const apiRes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/users/me`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/users/me/`,
         {
           method: "GET",
           headers: {

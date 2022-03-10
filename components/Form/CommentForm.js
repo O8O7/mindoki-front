@@ -54,7 +54,6 @@ const CommentForm = (props) => {
       headers: { "Content-Type": "application/json" },
       body: body,
     }).then((data) => {
-      console.log(data.status);
       if (data.status == 201) {
         alert("コメントに成功しました");
         setFormData({ content: "" });
@@ -105,8 +104,8 @@ const CommentForm = (props) => {
                   message: "2文字以上入力してください",
                 },
                 maxLength: {
-                  value: 500,
-                  message: "500文字以下で入力してください",
+                  value: 2000,
+                  message: "2000文字以下で入力してください",
                 },
               })}
               name="content"

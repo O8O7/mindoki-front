@@ -24,7 +24,7 @@ function PortfolioSearchFilterPage() {
   const router = useRouter();
   const { param } = router.query;
   const [pageURL, setPageURL] = useState(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio_list_large/?tag=${param}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/list_large/?tag=${param}`
   );
 
   const { data, error } = useSWR(pageURL, fetcher);

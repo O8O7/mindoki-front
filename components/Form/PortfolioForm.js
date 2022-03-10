@@ -1,25 +1,18 @@
 import { useForm } from "react-hook-form";
-import { useRef, useCallback, useState, useEffect } from "react";
-
+import { useRef, useCallback, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
 import Loader from "react-loader-spinner";
-import Link from "next/link";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { user_register } from "../../reduxs/actions/auth";
 import { Autocomplete } from "@mui/material";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
 import ReactTags from "react-tag-autocomplete";
-
-import { post_portfolio } from "../../reduxs/actions/portfolio";
 import MarkdownDialog from "../MarkdownDialog";
 
 const PortfolioForm = (props) => {
@@ -27,11 +20,8 @@ const PortfolioForm = (props) => {
   const [image, setImage] = useState(null);
 
   const [suggestions, setSuggestions] = useState([]);
-  const dispatch = useDispatch();
   const router = useRouter();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const message = useSelector((state) => state.auth.message);
-  const status_code = useSelector((state) => state.auth.status_code);
   const loading = useSelector((state) => state.auth.loading);
   const [isPublic, setIsPublic] = useState(false);
   const [language, setLanguage] = useState("");
@@ -74,25 +64,44 @@ const PortfolioForm = (props) => {
   };
 
   const onSubmit = async (data) => {
-    isPublic ? setIsPublic("True") : setIsPublic("False");
-    if (
-      dispatch &&
-      language &&
-      data.title &&
-      data.content &&
-      image &&
-      image.length <= 5
-    ) {
-      await dispatch(
-        post_portfolio(
-          language,
-          data.title,
-          tags,
-          data.content,
-          image,
-          isPublic
-        )
-      );
+    if (language && data.title && data.content && image && image.length <= 5) {
+      let access = false;
+      try {
+        access = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("access"))
+          .split("=")[1];
+      } catch (err) {
+        alert("アクセストークンがありません");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("language", language);
+
+      formData.append("title", data.title);
+      formData.append("description", data.content);
+      for (let i = 0; i < tags.length; i++) {
+        formData.append("tag", tags[i].name);
+      }
+      for (let i = 0; i < image.length; i++) {
+        formData.append("images", image[i]);
+      }
+      formData.append("is_public", isPublic ? "True" : "False");
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/`, {
+        method: "POST",
+        headers: {
+          Authorization: `JWT ${access}`,
+        },
+        body: formData,
+      }).then((data) => {
+        if (data.status == 201) {
+          alert("記事投稿に成功しました");
+          router.replace("/portfolio");
+        } else {
+          alert("記事投稿に失敗しました");
+        }
+      });
     } else if (!image) {
       alert("画像を選択してください");
     } else if (image && image.length >= 5) {
@@ -139,8 +148,8 @@ const PortfolioForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 50,
-                message: "50文字以下で入力してください",
+                value: 64,
+                message: "64文字以下で入力してください",
               },
             })}
             // autoComplete="given-name"
@@ -195,8 +204,8 @@ const PortfolioForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 5000,
-                message: "5000文字以下で入力してください",
+                value: 10000,
+                message: "10000文字以下で入力してください",
               },
             })}
             name="content"

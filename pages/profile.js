@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 
 import FriendDialog from "../components/UIKit/FriendDialog";
+import { useEffect } from "react";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -123,7 +124,7 @@ const Profile = () => {
                           followerData.data &&
                           followerData.data.length > 0
                             ? `${Object.keys(followingData.data).length}人`
-                            : "?人"
+                            : "0"
                         }
                       />
                     </ListItemButton>
@@ -162,7 +163,7 @@ const Profile = () => {
                           followerData.data &&
                           followerData.data.length > 0
                             ? `${Object.keys(followerData.data).length}人`
-                            : "?人"
+                            : "0"
                         }
                       />
                     </ListItemButton>

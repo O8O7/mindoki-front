@@ -22,7 +22,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 function ResponsiveDrawer() {
   const [pageURL, setPageURL] = useState(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio_list_large/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/list_large/`
   );
   const { data, error } = useSWR(pageURL, fetcher);
 

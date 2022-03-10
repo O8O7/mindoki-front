@@ -36,7 +36,7 @@ export default async function Rest(req, res) {
 
       const data = await apiRes.json();
 
-      if (apiRes.status === 200) {
+      if (apiRes.status === 201) {
         return res.status(apiRes.status).json({
           message: "記事投稿に成功しました",
         });

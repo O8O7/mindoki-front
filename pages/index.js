@@ -185,17 +185,17 @@ function Index({ article, portfolio, question }) {
 
 export async function getServerSideProps() {
   const article_res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/article_list/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/article/list/`
   );
   const article = await article_res.json();
 
   const portfolio_res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio_list/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/list/`
   );
   const portfolio = await portfolio_res.json();
 
   const question_res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/question_list/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/question/list/`
   );
   const question = await question_res.json();
 

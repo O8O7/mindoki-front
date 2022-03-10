@@ -8,8 +8,10 @@ import Markdown from "../Markdown";
 import ArticleGood from "../UIKit/ArticleGood";
 import AvatarIcon from "../UIKit/AvatorIcon";
 import EditButton from "../UIKit/EditButton";
+import { useSelector } from "react-redux";
 
 const ArticleDetail = (props) => {
+  const user = useSelector((state) => state.auth.user);
   return (
     <>
       <Card
@@ -97,7 +99,8 @@ const ArticleDetail = (props) => {
             </p>
           </div>
         </div>
-        <EditButton />
+        {user && user.user.id == props.user_id && <EditButton />}
+
         <Divider sx={{ marginBottom: 2 }} />
         <div style={{ position: "relative" }}>
           <div

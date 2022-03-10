@@ -7,9 +7,9 @@ import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-export default function BottomAppBar(props) {
+export default function BottomAppBar() {
   const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/tag/`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/common/tag/`,
     fetcher
   );
   if (error) return <div>failed to load</div>;

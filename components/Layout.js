@@ -26,6 +26,7 @@ import { user } from "../reduxs/actions/auth";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import LoadingKit from "./UIKit/LoadingKit";
+import { languageData } from "./UIKit/languageData";
 
 const drawerWidth = 230;
 
@@ -45,50 +46,13 @@ const Layout = (props) => {
     }
   }, [userInfo, dispatch]);
 
-  const initialLanguageValue = [
-    { id: "1", label: "Python" },
-    { id: "2", label: "PHP" },
-    { id: "3", label: "Ruby" },
-    { id: "4", label: "JavaScript" },
-    { id: "5", label: "SQL" },
-    { id: "6", label: "HTML・CSS" },
-    { id: "7", label: "C" },
-    { id: "8", label: "C++" },
-    { id: "9", label: "C#" },
-    { id: "10", label: "Java" },
-    { id: "11", label: "Kotlin" },
-    { id: "12", label: "Objective-C" },
-    { id: "13", label: "Swift" },
-    { id: "14", label: "Go" },
-    { id: "15", label: "Scala" },
-    { id: "16", label: "R" },
-    { id: "17", label: "Rust" },
-    { id: "18", label: "Dart" },
-  ];
+  const initialLanguageValue = languageData;
 
   const language = useRef(initialLanguageValue);
-
-  const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/language_list/`,
-    fetcher
-    // { refreshInterval: 6000 }
-  );
-
-  useEffect(() => {
-    if (data) {
-      language.current = data.results.map((option) => ({
-        id: option.id,
-        label: option.name,
-      }));
-    }
-  }, [data]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  //   if (error) return <div>failed to load</div>;
-  if (!data) return <LoadingKit />;
 
   const container =
     window !== undefined ? () => window().document.body : undefined;

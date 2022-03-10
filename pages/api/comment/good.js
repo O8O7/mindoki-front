@@ -18,7 +18,7 @@ export default async function CommentGood(req, res) {
 
     try {
       const apiRes = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/comment/good/`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/common/comment/good/`,
         {
           method: "POST",
           headers: {

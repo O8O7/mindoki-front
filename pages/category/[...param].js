@@ -29,21 +29,21 @@ function SearchHome() {
 
   const { data: article, error: articleError } = useSWR(
     param
-      ? `${process.env.NEXT_PUBLIC_API_URL}/api/article_list/?lang=${param[0]}&tag=${param[1]}`
+      ? `${process.env.NEXT_PUBLIC_API_URL}/api/article/list/?lang=${param[0]}&tag=${param[1]}`
       : null,
     fetcher
   );
 
   const { data: question, error: questionError } = useSWR(
     param
-      ? `${process.env.NEXT_PUBLIC_API_URL}/api/question_list/?lang=${param[0]}&tag=${param[1]}`
+      ? `${process.env.NEXT_PUBLIC_API_URL}/api/question/list/?lang=${param[0]}&tag=${param[1]}`
       : null,
     fetcher
   );
 
   const { data: portfolio, error: portfolioError } = useSWR(
     param
-      ? `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio_list/?lang=${param[0]}&tag=${param[1]}`
+      ? `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/list/?lang=${param[0]}&tag=${param[1]}`
       : null,
     fetcher
   );

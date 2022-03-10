@@ -28,7 +28,7 @@ function Question() {
   const { param } = router.query;
 
   const [pageURL, setPageURL] = useState(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/question_list_large/?tag=${param}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/question/list_large/?tag=${param}`
   );
 
   const { data, error } = useSWR(pageURL, fetcher);

@@ -34,7 +34,7 @@ export default async function ArticleRest(req, res) {
 
       const data = await apiRes.json();
 
-      if (apiRes.status === 200) {
+      if (apiRes.status === 201) {
         return res.status(apiRes.status).json({
           message: "Q&A投稿に成功しました",
         });

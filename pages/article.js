@@ -22,7 +22,7 @@ const drawerWidth = 230;
 
 function ResponsiveDrawer() {
   const [pageURL, setPageURL] = useState(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/article_list_large/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/article/list_large/`
   );
   const { data, error } = useSWR(pageURL, fetcher);
 

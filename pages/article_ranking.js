@@ -58,7 +58,9 @@ function article_ranking({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:8000/api/article_good_ranking/`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/article/good_ranking/`
+  );
   const data = await res.json();
 
   return {

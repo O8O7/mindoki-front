@@ -1,34 +1,25 @@
-import { useForm } from "react-hook-form";
-import { useRef, useCallback, useState, useEffect } from "react";
+import { useRef, useCallback, useState } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
+import { useForm } from "react-hook-form";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
 import Loader from "react-loader-spinner";
-import Link from "next/link";
-
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
-
 import { Autocomplete } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { post_article } from "../../reduxs/actions/article";
 
 import ReactTags from "react-tag-autocomplete";
 import MarkdownDialog from "../MarkdownDialog";
 import ArticleDetail from "../Detail/ArticleDetail";
 
 const QuestionForm = (props) => {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const message = useSelector((state) => state.auth.message);
-  const status_code = useSelector((state) => state.auth.status_code);
-  const loading = useSelector((state) => state.auth.loading);
-
+  const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [tags, setTags] = useState([]);
   const [isPublic, setIsPublic] = useState(false);
@@ -71,10 +62,33 @@ const QuestionForm = (props) => {
   };
 
   const onSubmit = async (data) => {
-    if (dispatch && language && data.title && data.content) {
-      await dispatch(
-        post_article(language, data.title, tags, data.content, isPublic)
-      );
+    // if (dispatch && language && data.title && data.content) {
+    //   await dispatch(
+    //     post_article(language, data.title, tags, data.content, isPublic)
+    //   );
+    // }
+    if (language && data.title && data.content) {
+      setLoading(true);
+      const body = JSON.stringify({
+        language: language,
+        title: data.title,
+        tag: tags,
+        description: data.content,
+        is_public: isPublic,
+      });
+      fetch("/api/article/rest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: body,
+      }).then((data) => {
+        if (data.status == 201) {
+          alert("記事投稿に成功しました");
+          router.replace("/article");
+        } else {
+          alert("記事投稿に失敗しました");
+        }
+      });
+      setLoading(false);
     }
   };
 
@@ -118,8 +132,8 @@ const QuestionForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 50,
-                message: "50文字以下で入力してください",
+                value: 64,
+                message: "64文字以下で入力してください",
               },
             })}
             name="title"
@@ -174,8 +188,8 @@ const QuestionForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 1000,
-                message: "1000文字以下で入力してください",
+                value: 10000,
+                message: "10000文字以下で入力してください",
               },
             })}
             name="content"

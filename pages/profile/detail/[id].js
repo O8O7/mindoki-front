@@ -15,7 +15,6 @@ import PortfolioCard from "../../../components/Card/PortfolioCard";
 
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Image from "next/image";
 import AvatarIcon from "../../../components/UIKit/AvatorIcon";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -161,7 +160,8 @@ const ProfileDetail = () => {
                       <PostCard
                         article_id={article.id}
                         user_id={article.username.id}
-                        src={article.username.image}
+                        // src={article.username.image}
+                        src={data.image}
                         name={article.username.name}
                         language={article.language.name}
                         title={article.title}

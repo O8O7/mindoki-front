@@ -24,8 +24,6 @@ export const post_article =
       is_public,
     });
 
-    console.log(body);
-
     try {
       const res = await fetch("/api/article/rest", {
         method: "POST",
@@ -47,33 +45,6 @@ export const post_article =
         type: POST_ARTICLE_FAIL,
       });
     }
-
-    // await axios
-    //   .post(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/api/auth/users/me/`,
-    //     {
-    //       language: language,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `JWT ${localStorage.getItem("access")}`,
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     //  console.log(`user.id ${res.data.id}`);
-    //     //  11
-    //     dispatch({
-    //       type: USER_LOADED_SUCCESS,
-    //       payload: res.data,
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     dispatch({
-    //       type: USER_LOADED_FAIL,
-    //     });
-    //   });
 
     dispatch({
       type: REMOVE_ARTICLE_LOADING,

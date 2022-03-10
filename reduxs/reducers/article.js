@@ -10,11 +10,6 @@ import {
 } from "./types";
 
 const initialState = {
-  //   access: null,
-  //   refresh: null,
-  //   isAuthenticated: null,
-  //   user: null,
-
   loading: false,
   status_code: null,
   message: null,
@@ -24,6 +19,14 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case POST_ARTICLE_SUCCESS:
+      return {
+        ...state,
+      };
+    case POST_ARTICLE_FAIL:
+      return {
+        ...state,
+      };
     case SET_ARTICLE_LOADING:
       return {
         ...state,

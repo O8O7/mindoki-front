@@ -68,7 +68,7 @@ function PortfolioRanking({ data }) {
 
 export async function getServerSideProps() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio_good_ranking/`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/portfolio/good_ranking/`
   );
   const data = await res.json();
 

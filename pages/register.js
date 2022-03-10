@@ -238,13 +238,22 @@ export default function Register() {
                     height={50}
                   />
                 ) : (
+                  //   <Button
+                  //     type="submit"
+                  //     fullWidth
+                  //     variant="contained"
+                  //     sx={{ mt: 3, mb: 2 }}
+                  //   >
+                  //     登録
+                  //   </Button>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    disabled
                   >
-                    登録
+                    開発中
                   </Button>
                 )}
                 <Grid container justifyContent="flex-end">
