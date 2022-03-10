@@ -33,9 +33,8 @@ function ResponsiveDrawer() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 2,
+          p: "0.8em",
           marginTop: 5,
-          //   width: { md: `calc(100% - ${drawerWidth}px)` },
           width: { md: `calc(100% - ${drawerWidth}px - ${rightDrawer}px)` },
         }}
       >

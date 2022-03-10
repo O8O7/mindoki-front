@@ -13,7 +13,8 @@ const QuestionDetail = (props) => {
     <>
       <Card
         sx={{
-          padding: 1,
+          fontSize: { xs: "14px", sm: "16px", md: "18px" },
+          padding: "1em",
           marginBottom: 1,
           boxShadow:
             "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(209, 209, 209)",
@@ -34,22 +35,20 @@ const QuestionDetail = (props) => {
               <a>
                 <div
                   style={{
-                    height: "60px",
-                    width: "60px",
+                    height: "3.5em",
+                    width: "3.5em",
                     borderRadius: "50%",
                     boxShadow:
                       "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(17 177 17)",
                     overflow: "hidden",
                     margin: "0 auto",
-                    marginRight: "10px",
-                    marginLeft: "5px",
+                    marginRight: "0.7em",
+                    marginLeft: "0.4em",
                   }}
                 >
                   <AvatarIcon
                     alt={props.user_name}
                     src={props.user_image}
-                    width="70"
-                    height="70"
                     objectFit="cover"
                   />
                 </div>
@@ -58,22 +57,20 @@ const QuestionDetail = (props) => {
           ) : (
             <div
               style={{
-                height: "60px",
-                width: "60px",
+                height: "3.5em",
+                width: "3.5em",
                 borderRadius: "50%",
                 boxShadow:
                   "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(17 177 17)",
                 overflow: "hidden",
                 margin: "0 auto",
-                marginRight: "10px",
-                marginLeft: "5px",
+                marginRight: "0.7em",
+                marginLeft: "0.4em",
               }}
             >
               <AvatarIcon
                 alt="テストユーザー"
                 src={"/profile.png"}
-                width="70"
-                height="70"
                 objectFit="cover"
               />
             </div>
@@ -140,18 +137,13 @@ const QuestionDetail = (props) => {
             <Badge
               color="secondary"
               badgeContent={props.comment.length}
-              style={{ marginRight: 10 }}
+              style={{ marginRight: "0.6em" }}
             >
-              <MailIcon style={{ color: "#1369e9", marginRight: 5 }} />
+              <MailIcon style={{ color: "#1369e9", marginRight: "0.2em" }} />
             </Badge>
             <QuestionGood id={props.question_id} good={props.good} />
           </div>
         </div>
-        {/* <Container style={{ marginTop: 15 }}>
-          <Typography variant="body1" gutterBottom>
-            {props.description}
-          </Typography>
-        </Container> */}
         <Markdown description={props.description} />
       </Card>
     </>

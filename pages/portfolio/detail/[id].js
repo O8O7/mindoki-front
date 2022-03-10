@@ -4,9 +4,6 @@ import Card from "@mui/material/Card";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 
-import { Typography } from "@mui/material";
-import { Container } from "@mui/material";
-
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import {
@@ -65,10 +62,11 @@ function PortfolioDetail() {
         <SearchUIKit />
         <Card
           sx={{
+            fontSize: { xs: "14px", sm: "16px", md: "18px" },
             marginBottom: 1,
             boxShadow:
               "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(209, 209, 209)",
-            padding: 2,
+            padding: "1em",
           }}
           className="CardSize"
         >
@@ -84,22 +82,20 @@ function PortfolioDetail() {
               <a>
                 <div
                   style={{
-                    height: "60px",
-                    width: "60px",
+                    height: "3.5em",
+                    width: "3.5em",
                     borderRadius: "50%",
                     boxShadow:
                       "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(17 177 17)",
                     overflow: "hidden",
                     margin: "0 auto",
-                    marginRight: "14px",
-                    marginLeft: "7px",
+                    marginRight: "0.7em",
+                    marginLeft: "0.4em",
                   }}
                 >
                   <AvatarIcon
                     alt={data.username.name}
                     src={data.username.image}
-                    width="70"
-                    height="70"
                     objectFit="cover"
                   />
                 </div>
@@ -238,27 +234,42 @@ function PortfolioDetail() {
                 </>
               )}
             </div>
-            <span
-              style={{
-                fontSize: "1em",
-                marginRight: 5,
-                display: "inline-block",
-                marginTop: "7px",
-              }}
-            >
-              投稿日: {data.posted_at}
-            </span>
-            |
-            <span style={{ fontSize: "1em", marginLeft: 5 }}>
-              更新日: {data.edited_at}
-            </span>
+            {data.posted_at == data.edited_at ? (
+              <span
+                style={{
+                  fontSize: "1em",
+                  marginRight: 5,
+                  display: "inline-block",
+                  marginTop: "7px",
+                }}
+              >
+                投稿日: {data.posted_at}
+              </span>
+            ) : (
+              <>
+                <span
+                  style={{
+                    fontSize: "1em",
+                    marginRight: 5,
+                    display: "inline-block",
+                    marginTop: "7px",
+                  }}
+                >
+                  投稿日: {data.posted_at}
+                </span>
+                |
+                <span style={{ fontSize: "1em", marginLeft: 5 }}>
+                  更新日: {data.edited_at}
+                </span>
+              </>
+            )}
             <div style={{ float: "right" }}>
               <Badge
                 color="secondary"
                 badgeContent={data.comment.length}
-                style={{ marginRight: 10 }}
+                style={{ marginRight: "0.6em" }}
               >
-                <MailIcon style={{ color: "#1369e9", marginRight: 5 }} />
+                <MailIcon style={{ color: "#1369e9", marginRight: "0.2em" }} />
               </Badge>
               <PortfolioGood id={data.id} good={data.good} />
             </div>
