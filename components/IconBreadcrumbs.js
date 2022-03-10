@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function IconBreadcrumbs(props) {
   return (
-    <Breadcrumbs aria-label="breadcrumb" sx={{ margin: 3 }}>
+    <Breadcrumbs aria-label="breadcrumb" sx={{ margin: { xs: 2, md: 3 } }}>
       <Link href={"/"} passHref>
         <MuiLink
           underline="hover"

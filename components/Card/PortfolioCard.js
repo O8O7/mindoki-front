@@ -1,12 +1,9 @@
 import Card from "@mui/material/Card";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
 import Skeleton from "@mui/material/Skeleton";
-
-import { useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -15,11 +12,12 @@ const PortfolioCard = (props) => {
   return (
     <Card
       sx={{
+        fontSize: { xs: "14px", sm: "16px", md: "18px" },
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        padding: 1,
-        marginBottom: 2,
+        padding: "0.5em",
+        marginBottom: "1em",
         boxShadow:
           "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(209, 209, 209)",
       }}
@@ -30,11 +28,9 @@ const PortfolioCard = (props) => {
           {props.thumbnail ? (
             <Image
               objectFit="cover"
-              //   layout="fill"
-              //   height={150}
               height={150}
               width={266}
-              alt={"404"}
+              alt={"thumbnail"}
               src={props.thumbnail}
               //   className="portfolio_image"
             />
@@ -48,7 +44,7 @@ const PortfolioCard = (props) => {
           position: "relative",
           width: "100%",
           textAlign: "left",
-          marginLeft: "5px",
+          marginLeft: "0.4em",
         }}
       >
         <div
@@ -61,19 +57,19 @@ const PortfolioCard = (props) => {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "1em",
               margin: 0,
               marginTop: 0,
               marginBottom: 0,
-              marginRight: "30px",
+              marginRight: "1.9em",
             }}
           >
             {props.name}
           </p>
           <p
             style={{
-              fontSize: "0.9rem",
-              margin: "0 10px 0 0",
+              fontSize: "0.9em",
+              margin: "0 0.7em 0 0",
             }}
           >
             投稿日: {props.posted_at}
@@ -81,7 +77,7 @@ const PortfolioCard = (props) => {
         </div>
         <p
           style={{
-            fontSize: "1.1rem",
+            fontSize: "1.1em",
             marginTop: 0,
             marginBottom: 0,
             textAlign: "start",
@@ -98,7 +94,7 @@ const PortfolioCard = (props) => {
             alignItems: "center",
             flexWrap: "wrap",
             float: "left",
-            marginRight: "30px",
+            marginRight: "1.9em",
           }}
         >
           <span className="tag">
@@ -124,13 +120,22 @@ const PortfolioCard = (props) => {
               <Badge
                 color="secondary"
                 badgeContent={props.comment.length}
-                style={{ marginRight: 10 }}
+                style={{ marginRight: "0.6em" }}
               >
-                <MailIcon style={{ color: "#1369e9", marginRight: 5 }} />
+                <MailIcon
+                  style={{
+                    color: "#1369e9",
+                    marginRight: "0.2em",
+                    fontSize: "1.5em",
+                  }}
+                />
               </Badge>
-              <IconButton disabled style={{ marginRight: 20, color: "#000" }}>
+              <IconButton
+                disabled
+                style={{ marginRight: "0.5em", color: "#000" }}
+              >
                 <Badge color="secondary" badgeContent={props.good.length}>
-                  <FavoriteBorderIcon />
+                  <FavoriteBorderIcon sx={{ fontSize: "0.9em" }} />
                 </Badge>
               </IconButton>
             </div>

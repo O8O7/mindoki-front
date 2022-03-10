@@ -11,11 +11,12 @@ const PostCard = (props) => {
   return (
     <Card
       sx={{
+        fontSize: { xs: "14px", sm: "16px", md: "18px" },
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        padding: 1,
-        marginBottom: 2,
+        padding: "0.5em",
+        marginBottom: "1.2em",
         boxShadow:
           "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(209, 209, 209)",
       }}
@@ -24,24 +25,18 @@ const PostCard = (props) => {
         <a>
           <div
             style={{
-              height: "60px",
-              width: "60px",
+              height: "3.5em",
+              width: "3.5em",
               borderRadius: "50%",
               boxShadow:
                 "0px 5px 8px 0px rgb(7 0 30), 0px 0px 0px 2px rgb(17 177 17)",
               overflow: "hidden",
               margin: "0 auto",
-              marginRight: "10px",
-              marginLeft: "5px",
+              marginRight: "0.7em",
+              marginLeft: "0.4em",
             }}
           >
-            <AvatarIcon
-              height="60"
-              width="60"
-              src={props.src}
-              alt={props.name}
-              objectFit="cover"
-            />
+            <AvatarIcon src={props.src} alt={props.name} objectFit="cover" />
           </div>
         </a>
       </Link>
@@ -62,19 +57,19 @@ const PostCard = (props) => {
         >
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: "1em",
               margin: 0,
               marginTop: 0,
               marginBottom: 0,
-              marginRight: "30px",
+              marginRight: "1.9em",
             }}
           >
             {props.name}
           </p>
           <p
             style={{
-              fontSize: "0.9rem",
-              margin: "0 10px 0 0",
+              fontSize: "0.9em",
+              margin: "0 0.7em 0 0",
             }}
           >
             投稿日: {props.posted_at}
@@ -82,7 +77,7 @@ const PostCard = (props) => {
         </div>
         <p
           style={{
-            fontSize: "1.1rem",
+            fontSize: "1.1em",
             marginTop: 0,
             marginBottom: 0,
             textAlign: "start",
@@ -99,7 +94,7 @@ const PostCard = (props) => {
             alignItems: "center",
             flexWrap: "wrap",
             float: "left",
-            marginRight: "30px",
+            marginRight: "1.9em",
           }}
         >
           <span className="tag">
@@ -125,13 +120,22 @@ const PostCard = (props) => {
               <Badge
                 color="secondary"
                 badgeContent={props.comment.length}
-                style={{ marginRight: 10 }}
+                style={{ marginRight: "0.6em" }}
               >
-                <MailIcon style={{ color: "#1369e9", marginRight: 5 }} />
+                <MailIcon
+                  style={{
+                    color: "#1369e9",
+                    marginRight: "0.2em",
+                    fontSize: "1.5em",
+                  }}
+                />
               </Badge>
-              <IconButton disabled style={{ marginRight: 20, color: "#000" }}>
+              <IconButton
+                disabled
+                style={{ marginRight: "0.5em", color: "#000" }}
+              >
                 <Badge color="secondary" badgeContent={props.good.length}>
-                  <FavoriteBorderIcon />
+                  <FavoriteBorderIcon sx={{ fontSize: "0.9em" }} />
                 </Badge>
               </IconButton>
             </div>

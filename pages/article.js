@@ -1,6 +1,4 @@
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-
 import SearchUIKit from "../components/SearchUIKit";
 import IconBreadcrumbs from "../components/IconBreadcrumbs";
 import { Typography } from "@mui/material";
@@ -69,7 +67,6 @@ function ResponsiveDrawer() {
             ))}
           </>
         )}
-        <Divider />
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           {data && data.previous ? (
