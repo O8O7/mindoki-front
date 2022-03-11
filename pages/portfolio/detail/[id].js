@@ -218,7 +218,7 @@ function PortfolioDetail() {
               }}
             >
               <span className="tag">
-                <Link href={`/search/${data.language.name}`}>
+                <Link href={`/${data.language.name}`}>
                   <a>{data.language.name}</a>
                 </Link>
               </span>
@@ -226,7 +226,7 @@ function PortfolioDetail() {
                 <>
                   {data.tag.map((tag, i) => (
                     <span key={`article_tag_i_${i}`} className="tag">
-                      <Link href={`/article/detail/${tag}`}>
+                      <Link href={`/${tag}`}>
                         <a>{tag}</a>
                       </Link>
                     </span>
