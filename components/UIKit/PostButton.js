@@ -4,7 +4,7 @@ import EditIcon from "@mui/icons-material/Edit";
 const PostButton = () => {
   return (
     <Link href="/postform" passHref>
-      <div className="postButton" style={{ zIndex: 2 }}>
+      <div className="postButton" style={{ zIndex: 100000 }}>
         <a>
           <EditIcon
             sx={{

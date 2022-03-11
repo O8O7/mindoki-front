@@ -33,7 +33,8 @@ function Question() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          fontSize: { xs: "14px", sm: "16px", md: "18px" },
+          p: "1em",
           marginTop: 5,
           width: { md: `calc(100% - ${drawerWidth}px)` },
         }}
