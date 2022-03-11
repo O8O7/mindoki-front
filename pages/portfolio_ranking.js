@@ -42,7 +42,7 @@ function PortfolioRanking({ data }) {
                   portfolio_id={portfolio.id}
                   name={portfolio.username.name}
                   language={portfolio.language.name}
-                  thumbnail={portfolio.image[0]}
+                  thumbnail={portfolio.image[0].image}
                   title={portfolio.title}
                   tags={portfolio.tag}
                   description={portfolio.description}

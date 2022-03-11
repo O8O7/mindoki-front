@@ -142,7 +142,7 @@ function PortfolioDetail() {
                             className="slider_image"
                             // src={`/404Error.pngs`}
                             alt="slider_image"
-                            src={src}
+                            src={src.image}
                             layout="fill"
                             objectFit="fill"
                             priority
@@ -182,7 +182,7 @@ function PortfolioDetail() {
                             id={`image_${i}`}
                             className="slider_image"
                             alt="slider image"
-                            src={src}
+                            src={src.image}
                             layout="fill"
                             objectFit="fill"
                             priority
