@@ -48,6 +48,7 @@ const QuestionCard = (props) => {
             display: "flex",
             justifyContent: "space-between",
             flexWrap: "wrap",
+            overflow: "auto",
           }}
         >
           <p

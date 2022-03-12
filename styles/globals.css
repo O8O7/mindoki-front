@@ -7,6 +7,15 @@ body {
   margin: 0 auto;
   background-color: #f9f9f9 !important;
   max-width: 1448px;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 600px) {
+  html,
+  body {
+    font-size: 16px;
+  }
 }
 
 a {

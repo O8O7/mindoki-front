@@ -45,6 +45,7 @@ const PostCard = (props) => {
           position: "relative",
           width: "100%",
           textAlign: "left",
+          overflow: "auto",
         }}
       >
         <div

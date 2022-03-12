@@ -45,6 +45,7 @@ const PortfolioCard = (props) => {
           width: "100%",
           textAlign: "left",
           marginLeft: "0.4em",
+          overflow: "auto",
         }}
       >
         <div
