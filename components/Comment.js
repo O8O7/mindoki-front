@@ -9,6 +9,7 @@ const Comment = (props) => {
     <>
       <Card
         sx={{
+          fontSize: { xs: "14px", sm: "16px", md: "18px" },
           padding: 1,
           marginBottom: 1,
           boxShadow:

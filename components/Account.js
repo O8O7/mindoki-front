@@ -118,9 +118,7 @@ const Account = () => {
             sx={{ fontWeight: "bold", color: "#000", background: "#68a4ff" }}
             onClick={logoutHandler}
           >
-            <Link href={"/logout"}>
-              <a>ログアウト</a>
-            </Link>
+            ログアウト
           </Button>
         ) : (
           <>

@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -61,7 +61,7 @@ const QuestionForm = (props) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     // if (dispatch && language && data.title && data.content) {
     //   await dispatch(
     //     post_article(language, data.title, tags, data.content, isPublic)
@@ -89,6 +89,8 @@ const QuestionForm = (props) => {
         }
       });
       setLoading(false);
+    } else {
+      alert("入力が間違っているか入力されていない場所があります。");
     }
   };
 

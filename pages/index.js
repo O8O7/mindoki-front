@@ -16,10 +16,19 @@ import Link from "next/link";
 import { Button } from "@mui/material";
 import NotFoundCard from "../components/Card/NotFoundCard";
 import PostButton from "../components/UIKit/PostButton";
+import { errorInit } from "../reduxs/actions/auth";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 const drawerWidth = 230;
 
 function Index({ article, portfolio, question }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (dispatch) {
+      dispatch(errorInit());
+    }
+  });
   return (
     <>
       <Box

@@ -16,6 +16,8 @@ export const LOGOUT = "LOGOUT";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAIL = "LOGOUT_FAIL";
 
+export const ErrorINIT = "ErrorINIT";
+
 // 読み込み中
 export const SET_AUTH_LOADING = "SET_AUTH_LOADING";
 export const REMOVE_AUTH_LOADING = "REMOVE_AUTH_LOADING";

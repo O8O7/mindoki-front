@@ -115,7 +115,7 @@ const CommentForm = (props) => {
               id="content"
               onClick={handleFocus}
               onChange={onChange}
-              label="内容を入力"
+              label="コメントを入力"
               value={content}
               multiline
             />

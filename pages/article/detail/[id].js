@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import AvatarCard from "../../../components/AvatarCard";
 import CommentForm from "../../../components/Form/CommentForm";
+import SkeletonCard from "../../../components/Card/SkeltonCard";
+import LoadingKit from "../../../components/UIKit/LoadingKit";
 
 const drawerWidth = 230;
 const rightDrawer = 300;
@@ -25,7 +27,6 @@ function ResponsiveDrawer() {
   );
 
   if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
 
   return (
     <>
@@ -38,8 +39,11 @@ function ResponsiveDrawer() {
           width: { md: `calc(100% - ${drawerWidth}px - ${rightDrawer}px)` },
         }}
       >
+        {!data && <LoadingKit />}
         <IconBreadcrumbs page="記事詳細" />
         <SearchUIKit />
+
+        {!data && <SkeletonCard height="400px" />}
         {data && (
           <ArticleDetail
             article_id={data.id}
@@ -57,7 +61,8 @@ function ResponsiveDrawer() {
           />
         )}
         <Divider />
-        {data.comment &&
+        {data &&
+          data.comment &&
           data.comment.map((com, i) => (
             <div key={`article_comment${i}`}>
               <Comment

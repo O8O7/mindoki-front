@@ -21,6 +21,7 @@ import {
   REMOVE_AUTH_LOADING,
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAIL,
+  ErrorINIT,
 } from "./types";
 
 // export const load_user = () => async (dispatch) => {
@@ -439,5 +440,11 @@ export const refresh = () => async (dispatch) => {
 
   dispatch({
     type: REMOVE_AUTH_LOADING,
+  });
+};
+
+export const errorInit = () => (dispatch) => {
+  dispatch({
+    type: ErrorINIT,
   });
 };

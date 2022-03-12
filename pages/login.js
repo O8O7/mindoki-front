@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { login } from "../reduxs/actions/auth";
@@ -49,6 +49,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const router = useRouter();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isError = useSelector((state) => state.auth.isError);
   const loading = useSelector((state) => state.auth.loading);
   const message = useSelector((state) => state.auth.message);
   const status_code = useSelector((state) => state.auth.status_code);
@@ -164,6 +165,9 @@ export default function Login() {
               /> */}
                 {status_code && message && (
                   <span style={{ color: "red" }}>{message}</span>
+                )}
+                {isError && (
+                  <span style={{ color: "red" }}>ログインに失敗しました。</span>
                 )}
                 {loading ? (
                   <Loader

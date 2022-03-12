@@ -16,6 +16,7 @@ import {
   LOGOUT_FAIL,
   SET_AUTH_LOADING,
   REMOVE_AUTH_LOADING,
+  ErrorINIT,
 } from "../actions/types";
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   isAuthenticated: null,
   user: null,
   loading: false,
+  isError: false,
   status_code: null,
   message: null,
 };
@@ -34,6 +36,11 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case ErrorINIT:
+      return {
+        ...state,
+        isError: false,
+      };
     case AUTHENTICATED_SUCCESS:
       return {
         ...state,
@@ -53,6 +60,7 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: true,
         status_code: null,
+        isError: false,
         message: "ログインに成功しました",
       };
     case SIGNUP_SUCCESS:
@@ -110,6 +118,7 @@ export default function (state = initialState, action) {
         ...state,
         isAuthenticated: false,
         user: null,
+        isError: true,
         message: "ログインに失敗しました",
         status_code: payload,
       };
