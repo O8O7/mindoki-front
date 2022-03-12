@@ -190,8 +190,8 @@ const QuestionForm = (props) => {
                 message: "2文字以上入力してください",
               },
               maxLength: {
-                value: 10000,
-                message: "10000文字以下で入力してください",
+                value: 100000,
+                message: "100000文字以下で入力してください",
               },
             })}
             name="content"
