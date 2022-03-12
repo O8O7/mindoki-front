@@ -24,7 +24,11 @@ const MarkdownDialog = () => {
     setOpen(false);
   };
   return (
-    <Box sx={{ display: { xs: "block", lg: "none" } }}>
+    <Box
+      sx={{
+        display: { xs: "block", lg: "none" },
+      }}
+    >
       <Button onClick={handleClickOpen}>Markdownの書き方チートシート▶︎</Button>
       <Dialog
         open={open}
@@ -33,7 +37,9 @@ const MarkdownDialog = () => {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogContent>
+        <DialogContent
+          sx={{ fontSize: { xs: "14px", sm: "16px", md: "18px" } }}
+        >
           <div id="alert-dialog-slide-description">
             <MarkdownCheatSheet />
           </div>

@@ -433,6 +433,10 @@ a:hover {
 .postButton:hover {
   opacity: 100%;
 }
+
+.MuiTableCell-root.tableMarkdown {
+  font-size: 11px;
+}
 /* 
     画面が600px以上からのデザイン
     material ui sm(smaill)
@@ -457,6 +461,10 @@ a:hover {
   .postButton {
     width: 90px;
     height: 90px;
+  }
+
+  .MuiTableCell-root.tableMarkdown {
+    font-size: 13px;
   }
 }
 
@@ -505,4 +513,86 @@ a:hover {
   .CardSize {
     font-size: 18px;
   }
+}
+
+blockquote {
+  margin: 0;
+}
+
+blockquote p {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0em 0.5em;
+  color: #494949;
+  background: #f4f4f4;
+  border-left: solid 5px #7db4e6;
+  border-bottom: solid 3px #d7d7d7;
+  margin-bottom: 0.6em;
+}
+
+blockquote blockquote p {
+  all: initial;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 4px;
+  border-bottom: solid 3px #cce4ff;
+  margin-bottom: 0.6em;
+  position: relative;
+}
+
+blockquote blockquote p:after {
+  all: initial;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 4px;
+  border-bottom: solid 3px #cce4ff;
+  position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 3px #5472cd;
+  bottom: -3px;
+  width: 20%;
+}
+
+blockquote blockquote blockquote p {
+  all: initial;
+  font-size: 1.1em;
+  display: block;
+  font-weight: bold;
+  padding-left: 7px;
+  border-left: solid 4px #33568c;
+  margin-bottom: 0.6em;
+}
+
+blockquote blockquote blockquote blockquote p {
+  all: initial;
+  font-weight: bold;
+  display: block;
+  background-color: #e7edf3;
+  color: #444;
+  padding: 7px;
+  border-radius: 0.6em;
+  margin-bottom: 0.6em;
+}
+
+p code {
+  display: inline-block;
+  width: 100%;
+  padding: 0.8em;
+  font-size: 1em;
+  background-color: #272822;
+  color: #f8f8f2;
+  border-radius: 0.6em;
+  border: solid 1px #d6dde4;
+  box-sizing: border-box;
+  font-family: Consolas, Menlo, Monaco, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Meiryo, monospace;
+  overflow: auto;
+  font-weight: bold;
+}
+
+p code:before {
+  content: "$ ";
 }

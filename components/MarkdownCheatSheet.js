@@ -20,16 +20,19 @@ const rows = [
   createData("見出し6", "###### 見出し6"),
   createData("改行", "スペース\n\n2つ"),
   //   createData("改行キャンセル", "バック \\スラッシュ"),
-  createData("引用", "> Blockquote"),
+  createData("引用1", "> Blockquote"),
+  createData("引用2", ">> Blockquote"),
+  createData("引用3", ">>> Blockquote"),
+  createData("引用4", ">>>> Blockquote"),
   createData("コード", "```python\r\nimport datetime\n```"),
-  createData("インラインコード", "`pip install django`"),
+  createData("コマンド", "`pip install django`"),
   createData("水平線", "---"),
   createData("箇条書き", "- リスト"),
   createData("番号付き箇条書き", "1) リスト"),
   createData("イタリック", "*イタリック*"),
   createData("ストロング", "**ストロング**"),
   createData("リンク", "[Google](https://www.google.com)"),
-  createData("画像", "![Image](URL)"),
+  //   createData("画像", "![Image](URL)"),
   //   createData("テーブル", "| TH1 | TH2 | \n----|----"),
   //   createData("テーブル", "- [x] not"),
 ];
@@ -37,7 +40,7 @@ const rows = [
 export default function MarkdownCheatSheet() {
   return (
     <>
-      <h2 style={{ textAlign: "center", margin: "5px" }}>
+      <h2 style={{ textAlign: "center", margin: "5px", fontSize: "1.3em" }}>
         Markdown記法チートシート
       </h2>
       <TableContainer
@@ -67,7 +70,14 @@ export default function MarkdownCheatSheet() {
                 <TableCell sx={{ padding: "0.5em" }} align="center">
                   {row.calories}
                 </TableCell>
-                <TableCell sx={{ padding: "0.5em", margin: 0 }} align="center">
+                <TableCell
+                  sx={{
+                    padding: "0.5em",
+                    margin: 0,
+                  }}
+                  align="center"
+                  className="tableMarkdown"
+                >
                   <Markdown description={row.calories} />
                 </TableCell>
               </TableRow>
